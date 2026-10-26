@@ -48,7 +48,7 @@ if (reduce) {
     gsap.timeline({ defaults: { ease: 'expo.out' }, onComplete: () => { curtain.remove(); lenis.start(); ScrollTrigger.refresh(); } })
       .to('.curtain path', { strokeDashoffset: 0, duration: 1.2, ease: 'power2.inOut' })
       .to(curtain, { yPercent: -100, duration: 1.1, ease: 'expo.inOut' }, '+=0.15')
-      .fromTo(heroWords, { yPercent: 110 }, { yPercent: 0, duration: 1.2, stagger: 0.07 }, '-=0.6')
+      .fromTo(heroWords, { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, duration: 1.2, stagger: 0.07 }, '-=0.6')
       .from('.hero .chip,.hero .lead,.hero .cta,.hero .trust', { y: 24, opacity: 0, stagger: 0.1, duration: 1 }, '-=0.9')
       .fromTo('.arch', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5, clearProps: 'clipPath' }, '-=1.3');
   });
@@ -56,7 +56,7 @@ if (reduce) {
   // 4. Scroll-driven moments (ScrollTrigger)
   gsap.to('.par', { yPercent: -18, rotate: 7, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
   $<HTMLElement>('[data-split]').filter((el) => !el.closest('.hero')).forEach((el) => {
-    gsap.fromTo(el.querySelectorAll('.w>span'), { yPercent: 110 }, { yPercent: 0, duration: 1.2, stagger: 0.06, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
+    gsap.fromTo(el.querySelectorAll('.w>span'), { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, duration: 1.2, stagger: 0.06, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
   });
   ScrollTrigger.batch('.rv', { start: 'top 88%', once: true, onEnter: (b) => reveal(b as HTMLElement[]) });
   gsap.fromTo('.bw', { opacity: 0.2 }, { opacity: 1, stagger: 0.1, ease: 'none', scrollTrigger: { trigger: '.big', start: 'top 85%', end: 'bottom 50%', scrub: true } });
